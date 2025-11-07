@@ -1,0 +1,200 @@
+.root {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+// wrapper to hold a stable min-height and hide slide overflow
+.gridWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+// Grid of buttons
+.grid {
+  display: grid;
+  grid-auto-rows: minmax(64px, auto);
+  gap: 12px;
+  align-items: stretch;
+  will-change: transform, opacity;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+}
+
+// Pager
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: saturate(1.1) blur(2px);
+  //border: 1px solid #e1dfdd;
+  border-radius: 12px;
+}
+
+// Edge chevrons & general button look
+.pagerBtn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #1f1f1f;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  transition: background 120ms ease, box-shadow 120ms ease, transform 80ms ease;
+}
+
+.pagerBtn:hover:not(:disabled) {
+  background: #f6f6f6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.pagerBtn:active:not(:disabled) {
+  transform: translateY(0);
+  background: #efefef;
+}
+
+.pagerBtn:disabled {
+  color: #8a8886;
+  background: #f3f2f1;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  cursor: auto;
+  opacity: 0.8;
+}
+
+// Stronger focus ring for accessibility
+.pagerBtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--themePrimary, #009f93);
+}
+
+.pagerEdge {
+  min-width: 40px;
+  font-weight: 600;
+}
+
+.pagerCenter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pageInfo {
+  font-size: 14px;
+  color: var(--neutralSecondary, #605e5c);
+}
+
+// Dots row (optional)
+.pageDots {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+// Dot buttons
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  background: #c8c6c4;
+  cursor: pointer;
+  transition: transform 100ms ease, background 120ms ease;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06) inset;
+  padding: 0;
+}
+
+.dot:hover {
+  transform: scale(1.15);
+  background: #b3b0ad;
+}
+
+.dotActive {
+  background: var(--themePrimary, #009f93);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(0, 83, 80, 0.25);
+}
+
+// Respect reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .pagerBtn,
+  .dot {
+    transition: none !important;
+  }
+}
+
+// Optional dark mode support if the page has it
+@media (prefers-color-scheme: dark) {
+  .pager {
+    background: rgba(36, 36, 36, 0.6);
+    border-color: #3a3a3a;
+  }
+  .pagerBtn {
+    color: #f8f8f8;
+    background: #2c2c2c;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .pagerBtn:hover:not(:disabled) {
+    background: #343434;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  .pageInfo {
+    color: #d6d6d6;
+  }
+  .dot {
+    background: #6b6b6b;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  }
+  .dotActive {
+    box-shadow: 0 0 0 2px #2c2c2c, 0 0 0 4px rgba(0, 120, 212, 0.35);
+  }
+}
+
+/* --- Sliding animations --- */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(-24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animLeft {
+  animation: slideInLeft 300ms ease;
+}
+.animRight {
+  animation: slideInRight 300ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animLeft,
+  .animRight {
+    animation: none !important;
+  }
+}

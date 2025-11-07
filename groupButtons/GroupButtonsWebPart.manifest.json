@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "af4c64d1-77c2-42cc-be61-37f038221ce3",
+  "alias": "GroupButtonsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+
+  "supportsFullBleed": true,
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "title": { "default": "Group Buttons" },
+      "description": {
+        "default": "A grid of customizable SmartButtons with paging"
+      },
+      "officeFabricIconFontName": "Group",
+      "properties": {
+        "columns": 3,
+        "buttonsPerPage": 9,
+        "buttons": [
+          {
+            "title": "Budget Change",
+            "url": "#",
+            "openInNewTab": true,
+            "textColor": "#ffffff",
+            "bgStart": "#1f6f5c",
+            "bgEnd": "#3a8f78",
+            "autoHeight": false,
+            "height": 64,
+            "paddingY": 12,
+            "borderRadius": 12,
+            "fontSize": 16,
+            "icon": "✏️",
+            "iconImage": "",
+            "paddingX": 16,
+            "textAlign": "left"
+          },
+          {
+            "title": "Request Access",
+            "url": "#",
+            "openInNewTab": false,
+            "textColor": "#ffffff",
+            "bgStart": "#004578",
+            "bgEnd": "#0078d4",
+            "autoHeight": false,
+            "height": 64,
+            "paddingY": 12,
+            "borderRadius": 12,
+            "fontSize": 16,
+            "icon": "🔑",
+            "iconImage": "",
+            "paddingX": 16,
+            "textAlign": "left"
+          }
+        ]
+      }
+    }
+  ]
+}
