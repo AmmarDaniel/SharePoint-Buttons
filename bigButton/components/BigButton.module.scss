@@ -1,0 +1,175 @@
+:root {
+  --btn-size: 120px;
+  --btn-bg: #057702;
+  --overlay: #316b58;
+  --logo-bg: #0f1715;
+  --text-bottom: #000000;
+  --btn-border: 3px;
+  --label-font-size: 16px;
+  --btn-radius: 12px;
+}
+
+/* Root applied to <a> or <button> element */
+.buttonRoot {
+  display: inline-block;
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+  width: max-content;
+  height: max-content;
+  line-height: 0;
+}
+
+/* The button */
+.bigButton {
+  display: block;
+  position: relative;
+
+  box-sizing: border-box;
+  border: var(--btn-border) solid #000;
+  border-radius: var(--btn-radius);
+  padding: 0;
+  margin: 0;
+
+  color: inherit;
+  font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  height: var(--btn-size); /* was 130px */
+  width: var(--btn-size); /* was 130px */
+
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  text-decoration: none;
+
+  /* Ripple/overlay */
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -150%;
+    width: 300%;
+    height: 300%;
+    border-radius: 50%;
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+    background-color: var(--overlay);
+  }
+
+  &:hover::before {
+    transform: translateX(-50%) scale(1);
+  }
+
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0px #000000;
+  }
+
+  &:active {
+    transform: translate(2px, 2px) scale(0.98);
+    box-shadow: 2px 2px 0px #000000;
+    transition-duration: 0.15s;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 2px;
+  }
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: calc(var(--btn-size) * 0.65);
+  height: calc(var(--btn-size) * 0.65);
+
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
+  border-radius: 50%;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--logo-bg);
+  overflow: hidden; /* keep image neatly inside the circle */
+}
+
+.logoImg {
+  display: block;
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.logoFallback {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: #ffffff33;
+}
+
+.belowText {
+  margin-top: 0;
+  font-size: var(--label-font-size);
+  font-weight: 600;
+  //text-transform: uppercase;
+  //letter-spacing: 0.8px;
+  color: var(--text-bottom);
+  text-align: center;
+
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+
+  width: 100%;
+  inline-size: var(--btn-size);
+  max-inline-size: var(--btn-size);
+}
+
+/* Full-width layout wrapper to position within the web part area */
+.outerWrap {
+  display: flex;
+  width: 100%;
+}
+
+.outerWrapLeft {
+  justify-content: flex-start;
+}
+.outerWrapCenter {
+  justify-content: center;
+}
+.outerWrapRight {
+  justify-content: flex-end;
+}
+
+/* A small inner wrapper used only for nudging */
+.nudge {
+  display: inline-grid;
+  width: var(--btn-size);
+  grid-auto-flow: row;
+  justify-items: stretch;
+  align-items: start; /* prevents vertical jumpiness */
+  row-gap: 8px;
+  transform: translateX(var(--nudge-x, 0px));
+}
+
+.nudge .bigButton {
+  width: 100%;
+  height: var(--btn-size);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bigButton:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0px #000000;
+  }
+}

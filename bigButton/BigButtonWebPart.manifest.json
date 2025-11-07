@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "95db7c23-8626-44ad-93a9-bb402f9707d8",
+  "alias": "BigButtonWebPart",
+  "componentType": "WebPart",
+  "version": "2.0.0",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsPersonalApp",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Under Development" },
+      "title": { "default": "Big Button 2" },
+      "description": { "default": "Single big button with label below" },
+      "officeFabricIconFontName": "LightningBolt",
+
+      "properties": {
+        "textBottom": "Duolingo",
+        "labelFontSize": 16,
+        "ariaLabel": "Big button",
+        "logoUrl": "",
+        "linkUrl": "",
+        "buttonBgColor": "#057702",
+        "overlayColor": "#316b58",
+        "logoBgColor": "#0f1715",
+        "textBottomColor": "#000000",
+        "buttonSize": 120,
+        "horizontalAlign": "left",
+        "horizontalOffset": 0,
+        "borderRadius": "12px"
+      }
+    }
+  ]
+}
